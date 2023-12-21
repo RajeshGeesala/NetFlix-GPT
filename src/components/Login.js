@@ -1,18 +1,51 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
 import { formValidation } from '../utils/regex'
-
+import {  createUserWithEmailAndPassword , signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../utils/firebase';
 const Login = () => {
   const [signIn, setSignIn] = useState(true) 
   const signInHandler = () => { setSignIn(!signIn) } ;
   const [errorMessage , setErrorMessage ] = useState(null)
   const email = useRef(null)
   const password = useRef(null)
-  const handleButton = (e) => {
-     e.preventDefault()
+  const handleButton = async (e) => {
+    await e.preventDefault()
      const message = formValidation(email.current.value , password.current.value)
      setErrorMessage(message)
-     console.log(email.current.value)
+      if (message) return ;
+      {
+        if(!signIn){
+          createUserWithEmailAndPassword(auth,email.current.value , password.current.value)
+            .then((userCredential) => {
+             // Signed up 
+              const user = userCredential.user;
+              console.log(user , "userCreated")
+              // ...
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(errorMessage)
+              console.log(errorCode)
+              // ..
+            });
+        }else{
+          signInWithEmailAndPassword(auth, email.current.value , password.current.value)
+            .then((userCredential) => {
+              // Signed in 
+              const user = userCredential.user;
+              console.log(user , " user Looged in")
+              // ...
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(errorMessage)
+            });
+        }
+      }
+     
   }
   return (
     <div>
@@ -26,7 +59,7 @@ const Login = () => {
             type="text"
             placeholder="User Name"
             name=""
-            id=""
+            
             className="my-4 p-2  bg-gray-500  rounded-lg"
           /> 
         }
@@ -36,7 +69,7 @@ const Login = () => {
           ref={email}
           placeholder="Email ID"
           name=""
-          id=""
+          autoComplete="current-password"
           className="my-4 p-2  bg-gray-500  rounded-lg"
         />  <br/>
         <input
