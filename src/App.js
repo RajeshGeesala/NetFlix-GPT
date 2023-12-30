@@ -3,6 +3,7 @@ import Body from './components/Body'
 import { Provider } from 'react-redux'
 import appStore from "./utils/AppStore"
 const App = () => {
+
   return (
     <div>
           <Provider store={appStore} >

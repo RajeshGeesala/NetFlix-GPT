@@ -7,6 +7,7 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { userLogo } from '../assets/images';
 const Login = () => {
   const [signIn, setSignIn] = useState(true)
   const signInHandler = () => { setSignIn(!signIn) };
@@ -15,9 +16,10 @@ const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   //useRef hooks form
-  const name = useRef()
+  const name = useRef(null)
   const email = useRef(null)
   const password = useRef(null)
+  //form submission
   const handleButton = async (e) => {
     await e.preventDefault()
     const message = formValidation(email.current.value, password.current.value)
@@ -28,17 +30,20 @@ const Login = () => {
     {
       if (!signIn) {
         //signup logic
-        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        createUserWithEmailAndPassword(auth,
+          email.current.value,
+          password.current.value)
           .then((userCredential) => {
             // Signed up 
             const user = userCredential.user;
             console.log(user)
             //updating pro
             updateProfile(user, {
-              displayName: name.current.value, photoURL: "https://occ-0-4857-2186.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABUMx6z-7bB7tyN-OZXt6i8BXuZHN5EWBr7MQy7ilhubrpI2yOofVtT-QmoO6VJt7I1ewosmuQa29BGFfOOVcJxdKx1sT-co.png?r=201"
+              displayName: name.current.value,
+              photoURL: userLogo
             }).then(() => {
               // Profile updated!
-              const { uid , email , photoURL , password} = auth.currentUser
+              const { uid, email, photoURL, password } = auth.currentUser
               dispatch(addUser({
                 uid: uid,
                 email: email,
@@ -48,10 +53,8 @@ const Login = () => {
               navigate("/browse")
             }).catch((error) => {
               // An error occurred
-              // ...
+              console.log(error)
             });
-
-            // ...
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -113,7 +116,7 @@ const Login = () => {
             className=" my-4  p-2 bg-gray-500 rounded-lg "
           />  <br />
           <p className='text-red-500 '>{errorMessage}</p>
-          <button type='submit' className=" my-6 p-3 bg-red-700 w-1/3 rounded-lg" onClick={handleButton}> {signIn ? "Sign In" : "Sign Up"} </button>
+          <button type='submit' className=" my-6 p-2 bg-red-700 w-1/3 rounded-lg" onClick={handleButton}> {signIn ? "Sign In" : "Sign Up"} </button>
           <p onClick={signInHandler} className='cursor-pointer' >  {signIn ? "New to Netflix?  Sign Up Now" : " Already a member  ? Sign In Now "} </p>
         </center>
 
