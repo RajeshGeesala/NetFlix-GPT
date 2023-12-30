@@ -3,3 +3,4 @@ export const LoginBgImage = "https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092
 
 export const userLogo = "https://occ-0-4857-2186.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABUMx6z-7bB7tyN-OZXt6i8BXuZHN5EWBr7MQy7ilhubrpI2yOofVtT-QmoO6VJt7I1ewosmuQa29BGFfOOVcJxdKx1sT-co.png?r=201";
 
+export const ImageCdnUrl = "https://image.tmdb.org/t/p/w500/"
