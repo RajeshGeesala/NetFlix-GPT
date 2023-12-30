@@ -18,9 +18,9 @@ const useMovieVideos = (movieId) => {
             console.log(movieTrailerFiltered)
             // if trailer is not there we have to display another video ;
             const movieVideo = movieData.results.find((video) => video.type == "Teaser")
-            console.log(movieVideo)
+            // console.log(movieVideo)
             const finalVideoToDisplay = movieTrailerFiltered ? movieTrailerFiltered : movieVideo;
-            console.log("final video", movieTrailerFiltered);
+            // console.log("final video", movieTrailerFiltered);
             //dispatch to add movie trailer
             dispatch(addMovieTrailer(finalVideoToDisplay)); }
         catch (error) {
