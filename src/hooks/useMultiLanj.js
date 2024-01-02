@@ -1,19 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addPopularMovies } from "../utils/moviesSlice";
+import { addMultiLangMovies} from "../utils/moviesSlice";
 import { options } from "../utils/ApiCalls";
 import axios from "axios";
 
-const usePopularMovies = () => {
+const useMultiLang = () => {
     const dispatch = useDispatch()
     //Api call for data
-    const getPopularMovies = async () => {
+    const getMultiLang = async () => {
         try {
-            const fetchingApi = await axios.get("https://api.themoviedb.org/3/movie/popular?", options)
+            const fetchingApi = await axios.get("https://api.themoviedb.org/3/search/multi", options)
             
             const data = await fetchingApi.data
-            // console.log( "usePopular",data.results)
-            dispatch(addPopularMovies(data.results))
+            console.log( "usePopular",data.results)
+            dispatch(addMultiLangMovies(data.results))
         }
         catch (error) {
             console.log(error)
@@ -21,7 +21,7 @@ const usePopularMovies = () => {
     }
 
     useEffect(() => {
-        getPopularMovies() 
+         getMultiLang() 
         
     }, [])
 
@@ -29,4 +29,4 @@ const usePopularMovies = () => {
 
 }
 
-export default usePopularMovies ;
+export default useMultiLang;

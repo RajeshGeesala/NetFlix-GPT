@@ -11,7 +11,7 @@ const useTrendingMovies = () => {
         try {
             const fetchingApi = await axios.get('https://api.themoviedb.org/3/trending/all/day?language=en-US', options)
             const data = await fetchingApi.data
-            console.log("use trending",data.results)
+            // console.log("use trending",data.results)
             dispatch(addTrendingMovies(data.results))
         }
         catch (error) {

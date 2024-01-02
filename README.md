@@ -20,6 +20,9 @@
 20. Fetched data for trailer title
 21. Update store with trailer video
 22. Embeded youtube video and made it auto play
+23. Gpt Search Component 
+24. Multi Language Support configuration
+
 
 
 

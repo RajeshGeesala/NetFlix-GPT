@@ -12,10 +12,10 @@ const useMovieVideos = (movieId) => {
         try {
             const getMovieDetails = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`, options)
             const movieData = await getMovieDetails.data;
-            console.log(movieData)
+            // console.log(movieData)
             //filtered movieTrailer
             const movieTrailerFiltered = movieData.results.find((video) => video.type == "Trailer")
-            console.log(movieTrailerFiltered)
+            // console.log(movieTrailerFiltered)
             // if trailer is not there we have to display another video ;
             const movieVideo = movieData.results.find((video) => video.type == "Teaser")
             // console.log(movieVideo)

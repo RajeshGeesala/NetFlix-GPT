@@ -8,9 +8,9 @@ const MainContainer = () => {
     // console.log(movies)
      if (!movies) return 
        const mainMovie  = movies[7]
-       console.log(mainMovie)
+      //  console.log(mainMovie)
        const {title ,overview ,id} = mainMovie ;
-       console.log(id)
+      //  console.log(id)
   return (
     <div>
          <VideoTitle title={title} overview={overview} />

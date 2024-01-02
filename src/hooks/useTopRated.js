@@ -12,7 +12,7 @@ const useTopRatedMovies = () => {
             const fetchingApi = await axios.get("https://api.themoviedb.org/3/movie/top_rated?", options)
             
             const data = await fetchingApi.data
-            console.log( "usePopular",data.results)
+            // console.log( "usePopular",data.results)
             dispatch(addTopRatedMovies(data.results))
         }
         catch (error) {

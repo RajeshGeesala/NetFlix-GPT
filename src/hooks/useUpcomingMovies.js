@@ -12,7 +12,7 @@ const useUpComingMovies = () => {
             const fetchingApi = await axios.get("https://api.themoviedb.org/3/movie/upcoming?", options)
             
             const data = await fetchingApi.data
-            console.log( "useUpComing",data.results)
+            // console.log( "useUpComing",data.results)
             dispatch(addUpComingMovies(data.results))
         }
         catch (error) {
