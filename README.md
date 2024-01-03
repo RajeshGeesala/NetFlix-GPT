@@ -23,14 +23,15 @@
 23. Gpt Search Component 
 24. Multi Language Support configuration 
 25. Made Gpt SearchBar component
-26. Created Gpt Slice and added to the store 
-27. Used OpenAi api to fetch the details what we entered in Gpt search Bar
-28. Used Promise.all( ) method for fetching details in an array
-29. Fetched movie details from openAi api and displayed in Ui open the app
-30. Re-Used the MovieList component to render details of movies from OpenAi API.
-31. 
-
-
+26. Get OpenAi api key
+27. Created Gpt Slice and added to the store 
+28. Used OpenAi api to fetch the details what we entered in Gpt search Bar
+29. Used Promise.all( ) method for fetching details in an array
+30. Fetched movie details from tmdb api and rendered in Ui open the app
+31. Re-Used the MovieList component to render details of movies from OpenAi API.
+31. Adding .env file .
+32. Used Memoization .
+33. 
 
 
 

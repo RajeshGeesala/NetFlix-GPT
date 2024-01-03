@@ -58,11 +58,11 @@ const Header = () => {
 
   }
   return (
-    <div className='absolute w-screen px-36 py-2 bg-gradient-to-b from-black z-10 flex justify-between '>
-      <img className='w-48' src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" />
+    <div className='absolute w-screen px-36 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row md:justify-between '>
+      <img className='w-48 mx-auto md:mx-0' src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" />
       {
         user && (
-          <div className='flex p-3'>
+          <div className='flex p-3 justify-between'>
             {  showGptSearch && (<select className='bg-gray-900 -p-2  rounded-lg text-white m-2' onChange={configHandler}>
                 {
                   Supported_languages.map(lang => <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)
@@ -74,7 +74,7 @@ const Header = () => {
                 showGptSearch ? "Go to Homepage" : "GPT Search"
               }
             </button>
-            <img src={user.photoURL} alt="user-icon" className='w-12 h-12 m-2' />
+            <img src={user.photoURL} alt="user-icon" className='w-12 h-12 m-2 hidden md:block' />
             <button className=" h-12  mt-2 text-gray-300 font-bold px-4  -pt-4  hover:red-500 bg-red-700 rounded-lg" onClick={handleSignOut}>SIGN OUT</button>
             {/* <h2 className=>{user.displayName}</h2> */}
           </div>)

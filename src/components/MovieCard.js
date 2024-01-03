@@ -7,7 +7,7 @@ const MovieCard = ({posterPAth}) => {
       return null
     }
   return (
-    <div className='w-48 pr-6 h-50'>
+    <div className='w-36 md:w-48 pr-6 h-50'>
           <img src={ImageCdnUrl + posterPAth}  />
     </div>
   )
