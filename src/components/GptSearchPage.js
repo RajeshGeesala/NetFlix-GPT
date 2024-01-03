@@ -6,7 +6,7 @@ import { BgImage } from '../assets/images'
 const GptSearchPage = () => {
     return (
         <div>
-            <div className='absolute -z-10'>
+            <div className='fixed -z-10'>
                 <img src={BgImage} />
                 </div>
                 <GptSearchBar />

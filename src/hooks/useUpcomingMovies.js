@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import {  addTopRatedMovies, addUpComingMovies } from "../utils/moviesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {   addUpComingMovies } from "../utils/moviesSlice";
 import { options } from "../utils/ApiCalls";
 import axios from "axios";
 
 const useUpComingMovies = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch() ;
+     // using variable from store using  useSelector for memoization ;
+     const  upComingMovies = useSelector(store => store.movies.upComingMovies);
     //Api call for data
     const getUpComingMovies = async () => {
         try {
@@ -21,9 +23,8 @@ const useUpComingMovies = () => {
     }
 
     useEffect(() => {
-        getUpComingMovies()
-        
-    }, [])
+     !upComingMovies &&  getUpComingMovies()    
+    },[ ] )
 
     
 

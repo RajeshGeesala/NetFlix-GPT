@@ -21,7 +21,15 @@
 21. Update store with trailer video
 22. Embeded youtube video and made it auto play
 23. Gpt Search Component 
-24. Multi Language Support configuration
+24. Multi Language Support configuration 
+25. Made Gpt SearchBar component
+26. Created Gpt Slice and added to the store 
+27. Used OpenAi api to fetch the details what we entered in Gpt search Bar
+28. Used Promise.all( ) method for fetching details in an array
+29. Fetched movie details from openAi api and displayed in Ui open the app
+30. Re-Used the MovieList component to render details of movies from OpenAi API.
+31. 
+
 
 
 

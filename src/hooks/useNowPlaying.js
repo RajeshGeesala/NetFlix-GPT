@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNowPlayingMovies } from "../utils/moviesSlice";
 import { options } from "../utils/ApiCalls";
 import axios from "axios";
 
 const useNowPLaying = () => {
     const dispatch = useDispatch()
+    // using variable from store using  useSelector for memoization ;
+  const nowPlayingMovies = useSelector(store => store.movies.nowPlayingMovies) ;
     //Api call for data
     const getLatestMovies = async () => {
         try {
@@ -21,7 +23,7 @@ const useNowPLaying = () => {
     }
 
     useEffect(() => {
-        getLatestMovies() 
+        !nowPlayingMovies && getLatestMovies() 
         
     }, [])
 

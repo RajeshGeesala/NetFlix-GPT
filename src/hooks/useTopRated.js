@@ -1,16 +1,19 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import {  addTopRatedMovies } from "../utils/moviesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addTopRatedMovies } from "../utils/moviesSlice";
 import { options } from "../utils/ApiCalls";
 import axios from "axios";
 
 const useTopRatedMovies = () => {
     const dispatch = useDispatch()
-    //Api call for data
+    // using variable from store using  useSelector for memoization ;
+    const topRatedMovies = useSelector(store => store.movies.topRatedMovies);
+    //Api call for data ;
+
     const getTopRatedMovies = async () => {
         try {
             const fetchingApi = await axios.get("https://api.themoviedb.org/3/movie/top_rated?", options)
-            
+
             const data = await fetchingApi.data
             // console.log( "usePopular",data.results)
             dispatch(addTopRatedMovies(data.results))
@@ -21,12 +24,12 @@ const useTopRatedMovies = () => {
     }
 
     useEffect(() => {
-        getTopRatedMovies() 
-        
+      !topRatedMovies &&  getTopRatedMovies()
+
     }, [])
 
-    
+
 
 }
 
-export default useTopRatedMovies ;
+export default useTopRatedMovies;
