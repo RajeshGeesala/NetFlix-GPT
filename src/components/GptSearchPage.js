@@ -6,14 +6,16 @@ import { BgImage } from '../assets/images'
 const GptSearchPage = () => {
     return (
         <>
-            <div className='fixed -z-10'>
-                <img className='h-screen object-cover' src={BgImage} />
-            </div>
-            <div className=''>
-                <GptSearchBar />
-                <GptMovieSuggestions />
-            </div>
-        </>
+        <div className='fixed  h-screen w-full -z-10'>
+          <img className='w-full object-cover h-screen' src={BgImage} alt="Background" />
+        </div>
+        <div className=''>
+          {/* Adjust margin-top based on screen size */}
+          <GptSearchBar />
+          <GptMovieSuggestions />  
+        </div>
+      </>
+      
     )
 }
 
